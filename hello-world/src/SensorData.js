@@ -5,7 +5,12 @@ class SensorData extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            sensorData: []
+            sensorData: {
+                temperature:0,
+                humidity:0,
+                timestamp:null
+            }
+            // sensorData: []
         }
     }
 
@@ -17,11 +22,12 @@ class SensorData extends Component {
             timestamp: new Date().toLocaleTimeString() //當前時間戳
         }
 
-        this.setState(
-            prevState=>({
-                sensorData: [newSensorData,...prevState.sensorData]
-            }
-            ));
+        this.setState({ sensorData: newSensorData });
+        // this.setState(
+        //     prevState=>({
+        //         sensorData: [newSensorData,...prevState.sensorData]
+        //     }
+        //     ));
         console.log(`感測器數據接收: `, newSensorData);
     }
 
@@ -47,7 +53,8 @@ class SensorData extends Component {
 
     render() {
         return (
-                <Dashboard data={this.state.sensorData}/>
+                <Dashboard data={[this.state.sensorData]}/>
+                // <Dashboard data={this.state.sensorData}/>
             // <>
             //     <h1>感應器資料</h1>
             //     <p>攝氏溫度: {this.state.sensorData.temperature}℃</p>

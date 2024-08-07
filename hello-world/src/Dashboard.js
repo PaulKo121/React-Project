@@ -1,6 +1,7 @@
 import React from 'react';
 
 const Dashboard = (props) => {
+    const { temperature, humidity, timestamp } = props.data[0];
     return (
         <>
             <h1>Dashboard</h1>
@@ -13,13 +14,18 @@ const Dashboard = (props) => {
                     </tr>
                 </thead>
                 <tbody>
-                    {props.data.map((item,index) => (
+                    <tr>
+                        <td>{temperature}</td>
+                        <td>{humidity}</td>
+                        <td>{timestamp}</td>
+                    </tr>
+                    {/* {props.data.map((item,index) => (
                         <tr key={index}>
                             <td>{item.temperature}</td>
                             <td>{item.humidity}</td>
                             <td>{item.timestamp}</td>
                         </tr>
-                    ))}                    
+                    ))} */}
                 </tbody>
             </table>
         </>
