@@ -48,9 +48,13 @@ const AddTodo = () => {
   const [newTodo, setNewTodo] = useState('');
   const [todos, setTodos] = useContext(TodoContext);
 
-  const handleSubmit=(e)=>{
-    
-  }
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (newTodo.trim()) {
+      setTodos([...todos, { text: newTodo, completed: false }]);
+      setNewTodo('');
+    }
+  };
 
   return (
     <form onSubmit={handleSubmit}>
