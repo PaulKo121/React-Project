@@ -46,7 +46,7 @@ const TodoList = () => {
 // AddTodo (UI)  context update
 const AddTodo = () => {
   const [newTodo, setNewTodo] = useState('');
-  const [addTodo] = useContext(TodoContext);
+  const {addTodo} = useContext(TodoContext);
 
   const handleSubmit = (e) => {
     e.preventDefault();
