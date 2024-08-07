@@ -43,10 +43,25 @@ const TodoList = () => {
 };
 
 // TODO: 添加新待辦事項的組件
+// AddTodo (UI)  context update
 const AddTodo = () => {
-  const [newTodo, setNewTod] = useState('');
+  const [newTodo, setNewTodo] = useState('');
   const [todos, setTodos] = useContext(TodoContext);
-  
+
+  const handleSubmit=(e)=>{
+    
+  }
+
+  return (
+    <form onSubmit={handleSubmit}>
+      <input
+        type="text"
+        value={newTodo}
+        onChange={(e) => setNewTodo(e.target.value)}
+      />
+      <button type="submit">Add Todo</button>
+    </form>
+  );
 }
 
 const App = () => {
