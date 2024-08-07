@@ -19,20 +19,35 @@ const TodoProvider = ({ children }) => {
     localStorage.setItem('todos', JSON.stringify(todos));
   }, [todos]);
 
-    
-  ... ... 略 ... ...
-    
+  const addTodo = (todo) => {
+    setTodos(todos.concat(todo));
+  };
+
   return (
-    <form onSubmit={handleSubmit}>
-      <input
-        type="text"
-        value={newTodo}
-        onChange={(e) => setNewTodo(e.target.value)}
-      />
-      <button type="submit">Add Todo</button>
-    </form>
+    <TodoContext.Provider value={{ todos, addTodo }}>
+      {children}
+    </TodoContext.Provider>
   );
 };
+
+// 顯示待辦事項列表的組件
+const TodoList = () => {
+  const { todos } = useContext(TodoContext);
+  return (
+    <ul>
+      {todos.map((todo, index) => (
+        <li key={index}>{todo}</li>
+      ))}
+    </ul>
+  );
+};
+
+// TODO: 添加新待辦事項的組件
+const AddTodo = () => {
+  const [newTodo, setNewTod] = useState('');
+  const [todos, setTodos] = useContext(TodoContext);
+  
+}
 
 const App = () => {
   return (
