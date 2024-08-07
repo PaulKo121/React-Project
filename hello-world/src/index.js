@@ -9,6 +9,8 @@ import SensorList from './SensorList';
 import ToDoItem from './ToDoItem';
 import ShowHide from './ShowHide';
 import LifecycleDemo from './LifecycleDemo';
+import DeviceStatusAPP from './DeviceStatusAPP';
+import TodoPrviderApp from './TodoProvider/TodoPrviderApp';
 import reportWebVitals from './reportWebVitals';
 
 const data = [
@@ -26,17 +28,18 @@ root.render(
   //   <input type="text" id="name"></input>
   //   <button>送出</button>
   // </div>
-  <ShowHide />
-  // <React.StrictMode>
-  //   {/* <LifecycleDemo/> */}
-  //   {/* <SensorList /> */}
-    
-  //   {/* <ToDoItem /> */}
-  //   {/* <Dashboard data={data} /> */}
-  //   {/* <Product name="蘋果" price="5" onBuy={() => {
-  //     console.log("產品已購買");
-  //   }} /> */}
-  // </React.StrictMode>
+  // <ShowHide />
+  <React.StrictMode>
+    {/* <DeviceStatusAPP /> */}
+    {/* <LifecycleDemo/> */}
+    {/* <SensorList /> */}
+
+    {/* <ToDoItem /> */}
+    {/* <Dashboard data={data} /> */}
+    {/* <Product name="蘋果" price="5" onBuy={() => {
+      console.log("產品已購買");
+    }} /> */}
+  </React.StrictMode>
   // <React.StrictMode>
   //   <Date />
   // </React.StrictMode>
