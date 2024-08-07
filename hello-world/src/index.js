@@ -46,14 +46,12 @@ const TodoList = () => {
 // AddTodo (UI)  context update
 const AddTodo = () => {
   const [newTodo, setNewTodo] = useState('');
-  const [todos, setTodos] = useContext(TodoContext);
+  const [addTodo] = useContext(TodoContext);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (newTodo.trim()) {
-      setTodos([...todos, { text: newTodo, completed: false }]);
-      setNewTodo('');
-    }
+    addTodo(newTodo);
+    setNewTodo("");
   };
 
   return (
