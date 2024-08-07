@@ -10,7 +10,6 @@ import ToDoItem from './ToDoItem';
 import ShowHide from './ShowHide';
 import LifecycleDemo from './LifecycleDemo';
 import DeviceStatusAPP from './DeviceStatusAPP';
-import TodoPrviderApp from './TodoProvider/TodoPrviderApp';
 import reportWebVitals from './reportWebVitals';
 
 const data = [
@@ -30,7 +29,7 @@ root.render(
   // </div>
   // <ShowHide />
   <React.StrictMode>
-    {/* <DeviceStatusAPP /> */}
+    <DeviceStatusAPP />
     {/* <LifecycleDemo/> */}
     {/* <SensorList /> */}
 
