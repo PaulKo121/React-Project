@@ -1,51 +1,48 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-import Dashboard from './Dashboard';
-import Date from './Date';
-import Product from './Product';
-import SensorList from './SensorList';
-import ToDoItem from './ToDoItem';
-import ShowHide from './ShowHide';
-import LifecycleDemo from './LifecycleDemo';
-import reportWebVitals from './reportWebVitals';
+import React, { useState, useEffect, useContext, createContext } from 'react';
+import ReactDOM from 'react-dom';
 
-const data = [
-  { "temperature": "25°C" },
-  { "temperature": "22°C" },
-  { "temperature": "36°C" },
-  { "temperature": "34°C" }
-];
+// 建立一個 Context
+const TodoContext = createContext();
 
+// TodoProvider 組件，提供待辦事項列表和操作函數
+const TodoProvider = ({ children }) => {
+  const [todos, setTodos] = useState([]);
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
-  // <div id="form">
-  //   <label for="name">姓名：</label>
-  //   <input type="text" id="name"></input>
-  //   <button>送出</button>
-  // </div>
-  <ShowHide />
-  // <React.StrictMode>
-  //   {/* <LifecycleDemo/> */}
-  //   {/* <SensorList /> */}
+  useEffect(() => {
+    // 從本地存儲載入待辦事項
+    const storedTodos = JSON.parse(localStorage.getItem('todos')) || [];
+    setTodos(storedTodos);
+  }, []);
+
+  useEffect(() => {
+    // 將待辦事項保存到本地存儲
+    localStorage.setItem('todos', JSON.stringify(todos));
+  }, [todos]);
+
     
-  //   {/* <ToDoItem /> */}
-  //   {/* <Dashboard data={data} /> */}
-  //   {/* <Product name="蘋果" price="5" onBuy={() => {
-  //     console.log("產品已購買");
-  //   }} /> */}
-  // </React.StrictMode>
-  // <React.StrictMode>
-  //   <Date />
-  // </React.StrictMode>
-  // <React.StrictMode>
-  //   <Dashboard />
-  // </React.StrictMode>
-);
+  ... ... 略 ... ...
+    
+  return (
+    <form onSubmit={handleSubmit}>
+      <input
+        type="text"
+        value={newTodo}
+        onChange={(e) => setNewTodo(e.target.value)}
+      />
+      <button type="submit">Add Todo</button>
+    </form>
+  );
+};
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+const App = () => {
+  return (
+    <TodoProvider>
+      <h1>Todo List</h1>
+      <AddTodo />
+      <TodoList />
+    </TodoProvider>
+  );
+};
+
+// 將 App 組件渲染到 root 元素中
+ReactDOM.render(<App />, document.getElementById('root'));
