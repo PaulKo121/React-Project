@@ -13,7 +13,7 @@ function App() {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        'Authorization': 'Bearer YOUR_ACCESS_TOKEN' // 在這裡加入授權標頭
+        'Authorization': 'Bearer YOUR_ACCESS_TOKEN' // 在這裡加入授權標頭，post專用
       },
       body: JSON.stringify({ key: 'value' }), // 您可以在這裡放置需要發送的資料
     })
