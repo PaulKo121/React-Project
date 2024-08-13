@@ -1,4 +1,4 @@
-import React, { createContext, useState, useContext, } from "react";
+import React, { createContext, useState, useContext } from "react";
 
 // 創建一個Context
 const SensorContext = createContext();
@@ -15,7 +15,7 @@ export const SensorProvider = ({ children }) => {
             ...prevSensors,
             [sensorName]: {
                 ...prevSensors[sensorName],
-                enable: !prevSensors[sensorName].enabled,
+                enable: !prevSensors[sensorName].enable, 
             }
         }));
     };
@@ -27,7 +27,7 @@ export const SensorProvider = ({ children }) => {
     );
 };
 
-//自定義Hook 來使用SensorContext
+// 自定義 Hook 來使用 SensorContext
 export const useSensors = () => {
     return useContext(SensorContext);
 }

@@ -1,12 +1,12 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import ReactDOM from 'react-dom/client';
 import App from './App';
-import { SensorProvider } from './SensorContext';
+
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <SensorProvider>
+  <React.StrictMode>
     <App />
-  </SensorProvider>,
+  </React.StrictMode>
 );
